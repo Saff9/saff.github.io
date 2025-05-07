@@ -5,25 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youngblood | Portfolio</title>
     <style>
-        /* ===== Core Styles ===== */
+        /* ===== Core Variables ===== */
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --card-bg: white;
+            --shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        /* ===== Dark Mode Variables ===== */
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --primary: #212121;
+            --accent: #4fc3f7;
+            --card-bg: #2d2d2d;
+            --shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+
+        /* ===== Base Styles ===== */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            color: #333;
-            background: #f9f9f9;
+            color: var(--text-color);
+            background: var(--bg-color);
+            transition: all 0.5s ease;
         }
-        
+
         /* ===== Menu Bar ===== */
         .menu-bar {
-            background: #2c3e50;
+            background: var(--primary);
             padding: 15px 0;
             position: sticky;
             top: 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            transition: all 0.5s ease;
         }
-        
+
         .menu-items {
             display: flex;
             justify-content: center;
@@ -32,7 +55,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         .menu-items a {
             color: white;
             text-decoration: none;
@@ -41,32 +64,58 @@
             padding: 5px 10px;
             transition: all 0.3s;
         }
-        
+
         .menu-items a:hover {
-            color: #3498db;
+            color: var(--accent);
         }
-        
+
+        /* ===== Dark Mode Toggle ===== */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
         /* ===== Content Sections ===== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
-        
+
         h1 {
-            color: #2c3e50;
+            color: var(--primary);
             font-size: 2.8rem;
             text-align: center;
             margin-bottom: 10px;
+            transition: all 0.5s ease;
         }
-        
+
         h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
             padding-bottom: 8px;
             margin-top: 50px;
+            transition: all 0.5s ease;
         }
-        
+
         /* ===== Project Cards ===== */
         .projects {
             display: grid;
@@ -74,31 +123,90 @@
             gap: 25px;
             margin: 40px 0;
         }
-        
+
         .project {
-            background: white;
+            background: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
+            transition: all 0.5s ease;
         }
-        
+
+        .project:hover {
+            transform: translateY(-10px);
+        }
+
         .project img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: all 0.5s ease;
         }
-        
+
         .project-info {
             padding: 20px;
         }
-        
+
+        /* ===== Contact Form ===== */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 40px auto;
+            transition: all 0.5s ease;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary);
+        }
+
         /* ===== Footer ===== */
         footer {
-            background: #2c3e50;
+            background: var(--primary);
             color: white;
             text-align: center;
             padding: 30px;
             margin-top: 60px;
+            transition: all 0.5s ease;
         }
     </style>
 </head>
@@ -148,12 +256,95 @@
                 </div>
             </div>
         </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
     </div>
 
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+    </button>
+
     <!-- Footer -->
-    <footer id="contact">
-        <h2>Get In Touch</h2>
-        <p>Email: <a href="mailto:contact@youngblood.com" style="color: #3498db;">contact@youngblood.com</a></p>
+    <footer>
+        <p>&copy; <span id="year"></span> Youngblood. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Save preference to localStorage
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            // Change icon
+            const icon = themeToggle.querySelector('svg');
+            if (isDark) {
+                icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+            } else {
+                icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>';
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            const icon = themeToggle.querySelector('svg');
+            icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+        }
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to a server
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('Message sent successfully!');
+            contactForm.reset();
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
