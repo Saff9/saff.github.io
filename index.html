@@ -1,47 +1,108 @@
-  <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Young Blood</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }body {
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #2c3e50;
+        padding: 20px;
+        color: #ecf0f1;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    header img {
+        height: 60px;
+        border-radius: 8px;
+    }
+
+    nav button {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    nav button:hover {
+        background-color: #2980b9;
+    }
+
+    #content {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    footer {
+        text-align: center;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 15px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+</style>
+<script>
+    function toggleAbout() {
+        const content = document.getElementById('about');
+        const button = document.getElementById('menu-btn');
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+            button.textContent = 'About Recent';
+        } else {
+            content.style.display = 'block';
+            button.textContent = 'Go Back';
+        }
+    }
+</script>
+
 </head>
 <body>
-    <!-- Header Section -->
     <header>
         <div class="logo">
             <h1>Young Blood</h1>
         </div>
         <div class="image">
-            <img src="your-image.jpg" alt="Logo Image" />
+            <img src="your-image.jpg" alt="Logo">
         </div>
-        <div class="menu">
-            <button id="menu-toggle" onclick="toggleMenu()">About Recent</button>
-        </div>
-    </header>
+        <nav>
+            <button id="menu-btn" onclick="toggleAbout()">About Recent</button>
+        </nav>
+    </header><div id="content">
+    <div id="about" style="display: none;">
+        <h2>About Recent</h2>
+        <p>Welcome to Young Blood. Stay updated with the latest articles and news.</p>
+    </div>
+    <h2>Post Your Article</h2>
+    <textarea placeholder="Write your article here..." rows="5" style="width: 100%; padding: 10px; margin: 10px 0;"></textarea>
+    <input type="file" accept="image/*"><br><br>
+    <button style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+</div>
 
-    <!-- Main Content Section -->
-    <main>
-        <section id="about" class="hidden">
-            <h2>About Recent</h2>
-            <p>This is some content about the recent activities or updates.</p>
-        </section>
+<footer>
+    <p>@ All rights reserved
 
-        <!-- Article and Image Upload Form -->
-        <section id="upload-section">
-            <h2>Upload Article & Image</h2>
-            <form id="upload-form">
-                <textarea id="article-text" placeholder="Write your article here..." rows="5"></textarea><br>
-                <input type="file" id="article-image" accept="image/*"><br>
-                <button type="submit">Submit Article</button>
-            </form>
-        </section>
-    </main>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>@ All rights reserved</p>
-    </footer>
-</body>
-</html>
