@@ -1,161 +1,47 @@
-<!DOCTYPE html><html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Thoughts</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #555;
-            color: #fff;
-        }
-        nav {
-            background-color: #777;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 1rem;
-        }
-        .title {
-            font-size: 1.5rem;
-            color: #D4AF37;
-        }
-        .menu {
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        .drawer {
-            position: absolute;
-            top: 60px;
-            right: 10px;
-            background-color: #333;
-            padding: 1rem;
-            display: none;
-            border-radius: 8px;
-        }
-        .drawer a {
-            display: block;
-            color: #fff;
-            margin: 0.5rem 0;
-            text-decoration: none;
-        }
-        .article {
-            background-color: #000;
-            margin: 1rem;
-            padding: 1rem;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-        .footer {
-            background-color: #777;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-        .about-btn {
-            background-color: #D4AF37;
-            color: #000;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-    <script>
-        function toggleDrawer() {
-            var drawer = document.getElementById('drawer');
-            drawer.style.display = (drawer.style.display === 'block') ? 'none' : 'block';
-        }
-        function addArticle() {
-            const title = prompt('Enter article title:');
-            const content = prompt('Enter article content:');
-            if (title && content) {
-                const newArticle = document.createElement('div');
-                newArticle.className = 'article';
-                newArticle.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
-                document.getElementById('articles').appendChild(newArticle);
-            }
-        }
-    </script>
-</head>
-<body>
-    <nav>
-        <div class="logo">
-            <img src="avatar.png" alt="Logo">
-            <div class="title">FREE THOUGHTS</div>
-        </div>
-        <div class="menu" onclick="toggleDrawer()">☰</div>
-        <div class="drawer" id="drawer">
-            <a href="#">About</a>
-            <a href="#">Recent</a>
-            <a href="#" onclick="addArticle()">Add Post</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
-    <div id="articles">
-        <div class="article">Example Article<br>•••••••••••••••••••••••</div>
-        <div class="article">Second Article<br>•••••••••••</div>
-    </div>
-    <div class="footer">
-        <button class="about-btn">About Us</button>
-        <p>@all rights reserved</p>
-    </div>
-</body>
-</html>
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article Submission</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <title>Young Blood</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="article-form-container">
-        <h2>Submit Article</h2>
-        <form id="articleForm" onsubmit="submitArticle(event)">
-            <label for="title">Article Title:</label>
-            <input type="text" id="title" name="title" required>
-            
-            <label for="body">Article Body:</label>
-            <textarea id="body" name="body" rows="10" required></textarea>
-            
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>Young Blood</h1>
+        </div>
+        <div class="image">
+            <img src="your-image.jpg" alt="Logo Image" />
+        </div>
+        <div class="menu">
+            <button id="menu-toggle" onclick="toggleMenu()">About Recent</button>
+        </div>
+    </header>
 
-    <!-- Section where articles will be displayed -->
-    <div id="articles">
-        <h2>All Articles</h2>
-    </div>
+    <!-- Main Content Section -->
+    <main>
+        <section id="about" class="hidden">
+            <h2>About Recent</h2>
+            <p>This is some content about the recent activities or updates.</p>
+        </section>
 
-    <script src="scripts.js"></script> <!-- Link to your JavaScript file -->
+        <!-- Article and Image Upload Form -->
+        <section id="upload-section">
+            <h2>Upload Article & Image</h2>
+            <form id="upload-form">
+                <textarea id="article-text" placeholder="Write your article here..." rows="5"></textarea><br>
+                <input type="file" id="article-image" accept="image/*"><br>
+                <button type="submit">Submit Article</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>@ All rights reserved</p>
+    </footer>
 </body>
 </html>
-<div class="article-form-container">
-    <h2>Submit Article</h2>
-    <form id="articleForm" onsubmit="submitArticle(event)">
-        <label for="title">Article Title:</label>
-        <input type="text" id="title" name="title" required>
-        <label for="body">Article Body:</label>
-        <textarea id="body" name="body" rows="10" required></textarea>
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
-<div id="articles">
-    <h2>All Articles</h2>
-</div>
