@@ -115,3 +115,33 @@
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Submission</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="article-form-container">
+        <h2>Submit Article</h2>
+        <form id="articleForm" onsubmit="submitArticle(event)">
+            <label for="title">Article Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="body">Article Body:</label>
+            <textarea id="body" name="body" rows="10" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Section where articles will be displayed -->
+    <div id="articles">
+        <h2>All Articles</h2>
+    </div>
+
+    <script src="scripts.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
