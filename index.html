@@ -3,357 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | Saff9</title>
+    <title>Youngblood | Portfolio</title>
     <style>
-        :root {
-            --bg-light: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --bg-dark: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            --text-light: #333;
-            --text-dark: #f0f0f0;
-            --card-light: rgba(255, 255, 255, 0.9);
-            --card-dark: rgba(30, 30, 40, 0.9);
-            --accent: #4ecdc4;
-        }
-
-        /* Base Styles */
+        /* ===== Core Styles ===== */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+        
+        /* ===== Menu Bar ===== */
+        .menu-bar {
+            background: #2c3e50;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .menu-items {
             display: flex;
             justify-content: center;
-            align-items: center;
-            background: var(--bg-light);
-            color: var(--text-light);
-            transition: all 0.5s ease;
-        }
-
-        body.dark-mode {
-            background: var(--bg-dark);
-            color: var(--text-dark);
-        }
-
-        .error-container {
-            background: var(--card-light);
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            transform: translateY(0);
-            animation: float 6s ease-in-out infinite;
-            transition: background 0.5s ease;
-        }
-
-        .dark-mode .error-container {
-            background: var(--card-dark);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            color: #ff6b6b;
-            font-size: 3em;
-            margin: 0 0 10px;
-        }
-
-        p {
-            font-size: 1.2em;
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-
-        .emoji {
-            font-size: 5em;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: shake 1.5s ease infinite;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(78, 205, 196, 0.6);
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 1.5em;
-            cursor: pointer;
-            color: var(--text-light);
-            transition: transform 0.3s;
-        }
-
-        .dark-mode .theme-toggle {
-            color: var(--text-dark);
-        }
-
-        .theme-toggle:hover {
-            transform: rotate(30deg);
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: rotate(0); }
-            10%, 30%, 50%, 70%, 90% { transform: rotate(-5deg); }
-            20%, 40%, 60%, 80% { transform: rotate(5deg); }
-        }
-
-        /* Particle Effects (Optional) */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(78, 205, 196, 0.6);
-            border-radius: 50%;
-            animation: float-particle 15s infinite linear;
-        }
-
-        @keyframes float-particle {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2em; }
-            .emoji { font-size: 3.5em; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Dark/Light Mode Toggle -->
-    <button class="theme-toggle" id="themeToggle">🌓</button>
-
-    <!-- Error Content -->
-    <div class="error-container">
-        <div class="emoji">🚀</div>
-        <h1>Whoops!</h1>
-        <p>We hit a snag (HTTP/2 Error).<br>Let’s get you back on track.</p>
-        <a href="https://saff9.github.io" class="btn">Go Home</a>
-    </div>
-
-    <!-- Floating Particles (Optional) -->
-    <div class="particles" id="particles"></div>
-
-    <!-- JavaScript for Interactions -->
-    <script>
-        // Dark/Light Mode Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-        });
-
-        // Check saved preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-        }
-
-        // Generate Particles (Optional)
-        const particles = document.getElementById('particles');
-        if (particles) {
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.width = `${Math.random() * 10 + 5}px`;
-                particle.style.height = particle.style.width;
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDelay = `${Math.random() * 15}s`;
-                particles.appendChild(particle);
-            }
-        }
-    </script>
-</body>
-</html><!DOCTYPE html><html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Young Blood</title>
-    <style>
-        * {
+            gap: 30px;
+            list-style: none;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }body {
-        background-color: #f4f4f4;
-        color: #333;
-    }
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #2c3e50;
-        padding: 20px;
-        color: #ecf0f1;
-    }
-
-    header h1 {
-        font-size: 2.5rem;
-        font-weight: bold;
-    }
-
-    header img {
-        height: 60px;
-        border-radius: 8px;
-    }
-
-    nav button {
-        background-color: #3498db;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    nav button:hover {
-        background-color: #2980b9;
-    }
-
-    #content {
-        padding: 20px;
-        margin: 20px auto;
-        max-width: 800px;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-    }
-
-    footer {
-        text-align: center;
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        padding: 15px;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-    }
-</style>
-<script>
-    function toggleAbout() {
-        const content = document.getElementById('about');
-        const button = document.getElementById('menu-btn');
-        if (content.style.display === 'block') {
-            content.style.display = 'none';
-            button.textContent = 'About Recent';
-        } else {
-            content.style.display = 'block';
-            button.textContent = 'Go Back';
         }
-    }
-</script>
-
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <h1>Young Blood</h1>
-        </div>
-        <div class="image">
-            <img src="your-image.jpg" alt="Logo">
-        </div>
-        <nav>
-            <button id="menu-btn" onclick="toggleAbout()">About Recent</button>
-        </nav>
-    </header><div id="content">
-    <div id="about" style="display: none;">
-        <h2>About Recent</h2>
-        <p>Welcome to Young Blood. Stay updated with the latest articles and news.</p>
-    </div>
-    <!DOCTYPE html><html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article Upload</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        input, textarea, button {
-            width: 100%;
-            margin: 8px 0;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-        button {
-            background-color: #007bff;
+        
+        .menu-items a {
             color: white;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: all 0.3s;
         }
-        button:hover {
-            background-color: #0056b3;
+        
+        .menu-items a:hover {
+            color: #3498db;
+        }
+        
+        /* ===== Content Sections ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-top: 50px;
+        }
+        
+        /* ===== Project Cards ===== */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .project {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .project img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        /* ===== Footer ===== */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
+    <!-- Three-Line Menu -->
+    <nav class="menu-bar">
+        <ul class="menu-items">
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
     <div class="container">
-        <h2>Upload Your Article</h2>
-        <form action="#" method="post" enctype="multipart/form-data">
-            <label for="title">Article Title:</label>
-            <input type="text" id="title" name="title" placeholder="Enter the article title" required><label for="content">Article Content:</label>
-        <textarea id="content" name="content" rows="6" placeholder="Write your article here..." required></textarea>
+        <section id="about">
+            <h1>YOUNGBLOOD</h1>
+            <p style="text-align: center; font-size: 1.2rem;">Designer & Developer</p>
+            
+            <h2>About Me</h2>
+            <p>I create modern, responsive websites and applications with focus on clean design and user experience.</p>
+        </section>
 
-        <label for="image">Upload Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required>
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <img src="images/project1.jpg" alt="Project 1">
+                    <div class="project-info">
+                        <h3>E-Commerce Site</h3>
+                        <p>Full-stack online store built with React and Node.js</p>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="images/project2.jpg" alt="Project 2">
+                    <div class="project-info">
+                        <h3>Mobile App UI</h3>
+                        <p>Fitness tracking application interface design</p>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="images/project3.jpg" alt="Project 3">
+                    <div class="project-info">
+                        <h3>Brand Identity</h3>
+                        <p>Visual identity for tech startup</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
+    <!-- Footer -->
+    <footer id="contact">
+        <h2>Get In Touch</h2>
+        <p>Email: <a href="mailto:contact@youngblood.com" style="color: #3498db;">contact@youngblood.com</a></p>
+    </footer>
 </body>
 </html>
-</div>
-
-<footer>
-    <p>@ All rights reserved
