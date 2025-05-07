@@ -16,6 +16,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
         .logo {
             display: flex;
@@ -32,8 +33,23 @@
             color: #D4AF37;
         }
         .menu {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
+        }
+        .drawer {
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #333;
+            padding: 1rem;
+            display: none;
+            border-radius: 8px;
+        }
+        .drawer a {
+            display: block;
+            color: #fff;
+            margin: 0.5rem 0;
+            text-decoration: none;
         }
         .article {
             background-color: #000;
@@ -58,6 +74,22 @@
             cursor: pointer;
         }
     </style>
+    <script>
+        function toggleDrawer() {
+            var drawer = document.getElementById('drawer');
+            drawer.style.display = (drawer.style.display === 'block') ? 'none' : 'block';
+        }
+        function addArticle() {
+            const title = prompt('Enter article title:');
+            const content = prompt('Enter article content:');
+            if (title && content) {
+                const newArticle = document.createElement('div');
+                newArticle.className = 'article';
+                newArticle.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+                document.getElementById('articles').appendChild(newArticle);
+            }
+        }
+    </script>
 </head>
 <body>
     <nav>
@@ -65,10 +97,18 @@
             <img src="avatar.png" alt="Logo">
             <div class="title">FREE THOUGHTS</div>
         </div>
-        <div class="menu">☰</div>
+        <div class="menu" onclick="toggleDrawer()">☰</div>
+        <div class="drawer" id="drawer">
+            <a href="#">About</a>
+            <a href="#">Recent</a>
+            <a href="#" onclick="addArticle()">Add Post</a>
+            <a href="#">Contact</a>
+        </div>
     </nav>
-    <div class="article">EXample Article<br>•••••••••••••••••••••••</div>
-    <div class="article">Second Article<br>•••••••••••</div>
+    <div id="articles">
+        <div class="article">Example Article<br>•••••••••••••••••••••••</div>
+        <div class="article">Second Article<br>•••••••••••</div>
+    </div>
     <div class="footer">
         <button class="about-btn">About Us</button>
         <p>@all rights reserved</p>
