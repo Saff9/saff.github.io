@@ -3,49 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Thoughts</title>
+    <title>Free Thoughts | Intellectual Essays</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header with Navigation -->
+    <!-- Header with Full-Width Navigation -->
     <header>
         <div class="container">
-            <h1 class="logo">FREE THOUGHTS</h1>
+            <div class="brand">
+                <h1 class="logo">FREE THOUGHTS</h1>
+                <p class="tagline">Essays on Philosophy & Society</p>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#" class="active">Home</a></li>
                     <li><a href="#">Articles</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#">Subscribe</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Provoking Ideas, Curated</h2>
+            <p>Read essays that challenge conventional thinking</p>
+            <a href="#" class="btn-primary">Explore Articles</a>
+        </div>
+    </section>
+
     <!-- Featured Articles -->
     <main class="container">
-        <article class="card">
-            <h2>Example Article</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <a href="#" class="read-more">Read More →</a>
-        </article>
+        <section class="articles-grid">
+            <article class="featured-card">
+                <div class="card-tag">Featured</div>
+                <h3>The Paradox of Modern Freedom</h3>
+                <p class="meta">By John Doe | May 15, 2023</p>
+                <p>An examination of how technological liberation has created new forms of societal constraint...</p>
+                <a href="#" class="read-more">Read Essay <i class="fas fa-arrow-right"></i></a>
+            </article>
 
-        <article class="card">
-            <h2>Second Article...</h2>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <a href="#" class="read-more">Read More →</a>
-        </article>
+            <article class="card">
+                <h3>Second Article: Ethics in the Digital Age</h3>
+                <p class="meta">By Jane Smith | April 28, 2023</p>
+                <p>Reevaluating moral frameworks when algorithms mediate human relationships...</p>
+                <a href="#" class="read-more">Read Essay <i class="fas fa-arrow-right"></i></a>
+            </article>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <h2>About Free Thoughts</h2>
+                <p>Founded in 2020, Free Thoughts is a platform for rigorous intellectual discourse. We publish long-form essays that bridge academia and public discourse, covering philosophy, political theory, and cultural criticism.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span>50+</span>
+                        <p>Essays Published</p>
+                    </div>
+                    <div class="stat">
+                        <span>10k+</span>
+                        <p>Monthly Readers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://via.placeholder.com/400x300" alt="Free Thoughts editorial team">
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
+    <!-- Footer with Contact -->
+    <footer id="contact">
         <div class="container">
-            <p>© All rights reserved</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>FREE THOUGHTS</h3>
+                    <p>Essays worth your time.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Archive</a></li>
+                        <li><a href="#">Contribute</a></li>
+                        <li><a href="#">Style Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>editor@freethoughts.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Free Thoughts. All rights reserved.</p>
+                <p class="legal">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+                </p>
             </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
