@@ -97,10 +97,64 @@
         <h2>About Recent</h2>
         <p>Welcome to Young Blood. Stay updated with the latest articles and news.</p>
     </div>
-    <h2>Post Your Article</h2>
-    <textarea placeholder="Write your article here..." rows="5" style="width: 100%; padding: 10px; margin: 10px 0;"></textarea>
-    <input type="file" accept="image/*"><br><br>
-    <button style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+    <!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input, textarea, button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Your Article</h2>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label for="title">Article Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter the article title" required><label for="content">Article Content:</label>
+        <textarea id="content" name="content" rows="6" placeholder="Write your article here..." required></textarea>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
 </div>
 
 <footer>
