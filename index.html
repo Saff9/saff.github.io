@@ -145,3 +145,17 @@
     <script src="scripts.js"></script> <!-- Link to your JavaScript file -->
 </body>
 </html>
+<div class="article-form-container">
+    <h2>Submit Article</h2>
+    <form id="articleForm" onsubmit="submitArticle(event)">
+        <label for="title">Article Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="body">Article Body:</label>
+        <textarea id="body" name="body" rows="10" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div id="articles">
+    <h2>All Articles</h2>
+</div>
