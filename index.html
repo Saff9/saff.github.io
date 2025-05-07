@@ -3,348 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youngblood | Portfolio</title>
-    <style>
-        /* ===== Core Variables ===== */
-        :root {
-            --bg-color: #f9f9f9;
-            --text-color: #333;
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --card-bg: white;
-            --shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        /* ===== Dark Mode Variables ===== */
-        .dark-mode {
-            --bg-color: #1a1a1a;
-            --text-color: #f0f0f0;
-            --primary: #212121;
-            --accent: #4fc3f7;
-            --card-bg: #2d2d2d;
-            --shadow: 0 3px 10px rgba(0,0,0,0.3);
-        }
-
-        /* ===== Base Styles ===== */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: var(--bg-color);
-            transition: all 0.5s ease;
-        }
-
-        /* ===== Menu Bar ===== */
-        .menu-bar {
-            background: var(--primary);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 100;
-            transition: all 0.5s ease;
-        }
-
-        .menu-items {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .menu-items a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            padding: 5px 10px;
-            transition: all 0.3s;
-        }
-
-        .menu-items a:hover {
-            color: var(--accent);
-        }
-
-        /* ===== Dark Mode Toggle ===== */
-        .theme-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            z-index: 100;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* ===== Content Sections ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        h1 {
-            color: var(--primary);
-            font-size: 2.8rem;
-            text-align: center;
-            margin-bottom: 10px;
-            transition: all 0.5s ease;
-        }
-
-        h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 8px;
-            margin-top: 50px;
-            transition: all 0.5s ease;
-        }
-
-        /* ===== Project Cards ===== */
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .project {
-            background: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.5s ease;
-        }
-
-        .project:hover {
-            transform: translateY(-10px);
-        }
-
-        .project img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: all 0.5s ease;
-        }
-
-        .project-info {
-            padding: 20px;
-        }
-
-        /* ===== Contact Form ===== */
-        .contact-form {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            max-width: 600px;
-            margin: 40px auto;
-            transition: all 0.5s ease;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s;
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary);
-        }
-
-        /* ===== Footer ===== */
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 60px;
-            transition: all 0.5s ease;
-        }
-    </style>
+    <title>Young Blood | Creative Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Three-Line Menu -->
-    <nav class="menu-bar">
-        <ul class="menu-items">
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#contact">CONTACT</a></li>
+    <!-- Animated Loader -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+        <div class="loader-text">YOUNG BLOOD</div>
+    </div>
+
+    <!-- Animated Menu Button -->
+    <div class="menu-toggle">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#home" class="nav-link" data-text="HOME">HOME</a></li>
+            <li><a href="#about" class="nav-link" data-text="ABOUT">ABOUT</a></li>
+            <li><a href="#work" class="nav-link" data-text="WORK">WORK</a></li>
+            <li><a href="#services" class="nav-link" data-text="SERVICES">SERVICES</a></li>
+            <li><a href="#contact" class="nav-link" data-text="CONTACT">CONTACT</a></li>
         </ul>
+        <div class="nav-overlay"></div>
     </nav>
 
     <!-- Main Content -->
-    <div class="container">
-        <section id="about">
-            <h1>YOUNGBLOOD</h1>
-            <p style="text-align: center; font-size: 1.2rem;">Designer & Developer</p>
-            
-            <h2>About Me</h2>
-            <p>I create modern, responsive websites and applications with focus on clean design and user experience.</p>
+    <main id="content">
+        <!-- Home Section -->
+        <section id="home" class="fullscreen-section">
+            <div class="hero-content">
+                <h1 class="animated-title">YOUNG <span>BLOOD</span></h1>
+                <p class="animated-subtitle">Creative Designer & Developer</p>
+                <a href="#work" class="cta-button pulse-animation">VIEW WORK</a>
+            </div>
+            <div class="scroll-down">
+                <div class="mouse">
+                    <div class="scroller"></div>
+                </div>
+            </div>
         </section>
 
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div class="projects">
-                <div class="project">
-                    <img src="images/project1.jpg" alt="Project 1">
-                    <div class="project-info">
-                        <h3>E-Commerce Site</h3>
-                        <p>Full-stack online store built with React and Node.js</p>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2>ABOUT <span>ME</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image reveal">
+                    <img src="images/profile.jpg" alt="Young Blood">
+                </div>
+                <div class="about-text reveal">
+                    <h3>Who am I?</h3>
+                    <p>I'm a passionate creative professional specializing in modern web design and development. With a focus on clean aesthetics and functional user experiences, I bring ideas to life through digital mediums.</p>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <div class="skill-name">Web Design</div>
+                            <div class="skill-bar">
+                                <div class="skill-percentage" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Development</div>
+                            <div class="skill-bar">
+                                <div class="skill-percentage" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Branding</div>
+                            <div class="skill-bar">
+                                <div class="skill-percentage" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="download-btn">DOWNLOAD CV</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="section dark-section">
+            <div class="section-header">
+                <h2>MY <span>WORK</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="work-filter">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="design">DESIGN</button>
+                <button class="filter-btn" data-filter="development">DEVELOPMENT</button>
+                <button class="filter-btn" data-filter="branding">BRANDING</button>
+            </div>
+            <div class="work-grid">
+                <div class="work-item design reveal">
+                    <img src="images/work1.jpg" alt="Project 1">
+                    <div class="work-overlay">
+                        <h3>Project Title</h3>
+                        <p>Design</p>
+                        <a href="#" class="work-link"><i class="fas fa-expand"></i></a>
                     </div>
                 </div>
-                <div class="project">
-                    <img src="images/project2.jpg" alt="Project 2">
-                    <div class="project-info">
-                        <h3>Mobile App UI</h3>
-                        <p>Fitness tracking application interface design</p>
+                <div class="work-item development reveal">
+                    <img src="images/work2.jpg" alt="Project 2">
+                    <div class="work-overlay">
+                        <h3>Project Title</h3>
+                        <p>Development</p>
+                        <a href="#" class="work-link"><i class="fas fa-expand"></i></a>
                     </div>
                 </div>
-                <div class="project">
-                    <img src="images/project3.jpg" alt="Project 3">
-                    <div class="project-info">
-                        <h3>Brand Identity</h3>
-                        <p>Visual identity for tech startup</p>
+                <div class="work-item branding reveal">
+                    <img src="images/work3.jpg" alt="Project 3">
+                    <div class="work-overlay">
+                        <h3>Project Title</h3>
+                        <p>Branding</p>
+                        <a href="#" class="work-link"><i class="fas fa-expand"></i></a>
+                    </div>
+                </div>
+                <div class="work-item design reveal">
+                    <img src="images/work4.jpg" alt="Project 4">
+                    <div class="work-overlay">
+                        <h3>Project Title</h3>
+                        <p>Design</p>
+                        <a href="#" class="work-link"><i class="fas fa-expand"></i></a>
+                    </div>
+                </div>
+                <div class="work-item development reveal">
+                    <img src="images/work5.jpg" alt="Project 5">
+                    <div class="work-overlay">
+                        <h3>Project Title</h3>
+                        <p>Development</p>
+                        <a href="#" class="work-link"><i class="fas fa-expand"></i></a>
+                    </div>
+                </div>
+                <div class="work-item branding reveal">
+                    <img src="images/work6.jpg" alt="Project 6">
+                    <div class="work-overlay">
+                        <h3>Project Title</h3>
+                        <p>Branding</p>
+                        <a href="#" class="work-link"><i class="fas fa-expand"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="section-header">
+                <h2>MY <span>SERVICES</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Beautiful, responsive designs that work across all devices and platforms.</p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom web applications built with modern technologies and frameworks.</p>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Apps</h3>
+                    <p>Native and hybrid mobile applications for iOS and Android platforms.</p>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Branding</h3>
+                    <p>Complete branding solutions including logo design and visual identity.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO</h3>
+                    <p>Search engine optimization to help your website rank higher in results.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Marketing</h3>
+                    <p>Digital marketing strategies to grow your business and reach customers.</p>
+                </div>
+            </div>
         </section>
-    </div>
 
-    <!-- Dark Mode Toggle -->
-    <button class="theme-toggle" id="themeToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-        </svg>
-    </button>
+        <!-- Contact Section -->
+        <section id="contact" class="section dark-section">
+            <div class="section-header">
+                <h2>GET IN <span>TOUCH</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info reveal">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Creative Street, Design City</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contact@youngblood.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 234 567 890</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; <span id="year"></span> Youngblood. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>YOUNG <span>BLOOD</span></h2>
+                <p>Creative Designer & Developer</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> YOUNG BLOOD. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <script>
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            // Save preference to localStorage
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark);
-            
-            // Change icon
-            const icon = themeToggle.querySelector('svg');
-            if (isDark) {
-                icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-            } else {
-                icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>';
-            }
-        });
-
-        // Check for saved theme preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            const icon = themeToggle.querySelector('svg');
-            icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-        }
-
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form values
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-            
-            // Here you would typically send the data to a server
-            console.log('Form submitted:', data);
-            
-            // Show success message
-            alert('Message sent successfully!');
-            contactForm.reset();
-        });
-
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
