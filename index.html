@@ -5,27 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Thoughts</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header with Navigation -->
     <header>
-        <h1>FREE THOUGHTS</h1>
+        <div class="container">
+            <h1 class="logo">FREE THOUGHTS</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Articles</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="article">
+    <!-- Featured Articles -->
+    <main class="container">
+        <article class="card">
             <h2>Example Article</h2>
-            <p>Your content goes here...</p>
-        </section>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <a href="#" class="read-more">Read More →</a>
+        </article>
 
-        <section class="article">
+        <article class="card">
             <h2>Second Article...</h2>
-            <p>Your content goes here...</p>
-        </section>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a href="#" class="read-more">Read More →</a>
+        </article>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <a href="#" class="about-link">About Us</a>
-        <p class="copyright">© All rights reserved</p>
+        <div class="container">
+            <p>© All rights reserved</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
