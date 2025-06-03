@@ -3,70 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dropper JEE Prep</title>
-  <meta name="theme-color" content="#0d1b2a" />
-  <link rel="manifest" href="manifest.json" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Dropper JEE</title>
   <style>
-    /* Same CSS as before... */
     body {
-      font-family: 'Open Sans', sans-serif;
-      background: #f0f2f5;
+      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 60px 15px 70px;
-      color: #333;
+      padding: 0 0 70px;
+      background: #f9f9f9;
     }
 
     .header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: linear-gradient(135deg, #0d1b2a, #0f2a3f);
-      color: #fff;
+      background: #0d1b2a;
+      color: white;
       padding: 15px;
       z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    .header h1 {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.5rem;
+    .content {
+      padding: 80px 15px 15px;
     }
 
-    .date-time {
-      font-size: 0.85rem;
+    .section {
+      display: none;
     }
 
-    .subject-card {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      color: white;
-      border-radius: 12px;
-      padding: 25px 15px;
-      text-align: center;
-      margin-bottom: 20px;
-      cursor: pointer;
+    .section.active {
+      display: block;
+    }
+
+    .subject-card, .tile {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .subject-card h2 {
-      font-size: 2.5rem;
-      margin: 0 0 10px;
-    }
-
-    .subject-card h3 {
-      font-size: 1.5rem;
       margin: 0;
+      font-size: 28px;
+      color: #0d1b2a;
+      text-align: center;
     }
 
-    .progress-item {
-      background: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 12px;
+    .tile {
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background: #00a8e8;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+      cursor: pointer;
     }
 
     .bottom-nav {
@@ -74,191 +73,88 @@
       bottom: 0;
       width: 100%;
       display: flex;
-      background: #fff;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      background: white;
+      border-top: 1px solid #ccc;
       justify-content: space-around;
-      padding: 12px 0;
+      padding: 10px 0;
     }
 
     .nav-item {
       text-align: center;
-      color: #6c757d;
-      font-size: 0.85rem;
+      font-size: 14px;
+      color: #444;
+      cursor: pointer;
     }
 
     .nav-item.active {
       color: #00a8e8;
-    }
-
-    .nav-item i {
-      font-size: 1.4rem;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, #ddd, transparent);
-      margin: 25px 0;
-    }
-
-    h2, h3 {
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    .modal-content input, .modal-content select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-    }
-
-    .modal-content button {
-      padding: 10px 20px;
-      background: #00a8e8;
-      color: white;
       font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .modal-content button.close {
-      background: #e74c3c;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
   <div class="header">
-    <h1>Dropper JEE</h1>
-    <div class="date-time">5/16/2025 | 01:34:56</div>
+    <h2>Dropper JEE</h2>
   </div>
 
-  <!-- Main Content -->
-  <div class="container">
-    <h2>Subjects</h2>
-    <p>Select your subjects & start learning</p>
-
-    <!-- Subject Card -->
-    <div class="subject-card">
-      <h2>E=mc²</h2>
-      <h3>Physics</h3>
+  <div class="content">
+    <!-- Subjects Section -->
+    <div id="subjects" class="section active">
+      <h3>Subjects</h3>
+      <div class="subject-card">
+        <h2>E=mc²</h2>
+        <p>Physics</p>
+      </div>
+      <div class="tile">Physical Chemistry</div>
+      <div class="tile">Inorganic Chemistry</div>
+      <div class="tile">Organic Chemistry</div>
+      <button class="btn">+ Add New Subject</button>
     </div>
 
-    <div class="section-divider"></div>
+    <!-- Progress Section -->
+    <div id="progress" class="section">
+      <h3>Your Progress</h3>
+      <div class="tile">Physics: 70% complete</div>
+      <div class="tile">Maths: 55% complete</div>
+      <div class="tile">Chemistry: 80% complete</div>
+    </div>
 
-    <h3>Maths</h3>
-    <div class="progress-item">Physical Chemistry</div>
-    <div class="progress-item">Inorganic Chemistry</div>
-    <div class="progress-item">Organic Chemistry</div>
+    <!-- Lectures Section -->
+    <div id="lectures" class="section">
+      <h3>Lectures</h3>
+      <div class="tile">Gauss Law - Part 1</div>
+      <div class="tile">Gauss Law - Part 2</div>
+      <div class="tile">Kinematics Basics</div>
+    </div>
 
-    <button id="addSubjectBtn" style="width:100%; margin-top:20px; padding:10px; background:#00a8e8; border:none; color:#fff; border-radius:8px; font-weight:600;">
-      <i class="fas fa-plus"></i> Add New Subject
-    </button>
-  </div>
-
-  <!-- Modal to Add New Subject -->
-  <div class="modal" id="addSubjectModal">
-    <div class="modal-content">
-      <h3>Add a New Subject</h3>
-      <input type="text" id="subjectName" placeholder="Subject Name" required />
-      <input type="text" id="subjectCode" placeholder="Subject Code (Optional)" />
-      <button id="saveSubjectBtn">Save Subject</button>
-      <button class="close" id="closeModalBtn">Close</button>
+    <!-- Profile Section -->
+    <div id="profile" class="section">
+      <h3>Profile</h3>
+      <div class="tile">Name: Student</div>
+      <div class="tile">Course: Dropper JEE</div>
+      <div class="tile">Enrolled: Physics, Maths, Chemistry</div>
     </div>
   </div>
 
   <!-- Bottom Navigation -->
   <div class="bottom-nav">
-    <div class="nav-item active" id="subjectsNav">
-      <i class="fas fa-book"></i>
-      Subjects
-    </div>
-    <div class="nav-item" id="progressNav">
-      <i class="fas fa-chart-line"></i>
-      Progress
-    </div>
-    <div class="nav-item" id="lecturesNav">
-      <i class="fas fa-video"></i>
-      Lectures
-    </div>
-    <div class="nav-item" id="profileNav">
-      <i class="fas fa-user"></i>
-      Profile
-    </div>
+    <div class="nav-item active" onclick="showTab('subjects', this)">Subjects</div>
+    <div class="nav-item" onclick="showTab('progress', this)">Progress</div>
+    <div class="nav-item" onclick="showTab('lectures', this)">Lectures</div>
+    <div class="nav-item" onclick="showTab('profile', this)">Profile</div>
   </div>
 
   <script>
-    // Navigation Switcher
-    const subjectsNav = document.getElementById("subjectsNav");
-    const progressNav = document.getElementById("progressNav");
-    const lecturesNav = document.getElementById("lecturesNav");
-    const profileNav = document.getElementById("profileNav");
-
-    const subjectSection = document.getElementById("subjects-screen");
-    const progressSection = document.getElementById("progress-screen");
-    const lecturesSection = document.getElementById("lectures-screen");
-    const profileSection = document.getElementById("profile-screen");
-
-    function showSection(section) {
-      subjectSection.style.display = "none";
-      progressSection.style.display = "none";
-      lecturesSection.style.display = "none";
-      profileSection.style.display = "none";
-      
-      section.style.display = "block";
+    function showTab(tabId, element) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+      // Show the selected section
+      document.getElementById(tabId).classList.add('active');
+      // Highlight active nav item
+      document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+      element.classList.add('active');
     }
-
-    subjectsNav.addEventListener("click", () => showSection(subjectSection));
-    progressNav.addEventListener("click", () => showSection(progressSection));
-    lecturesNav.addEventListener("click", () => showSection(lecturesSection));
-    profileNav.addEventListener("click", () => showSection(profileSection));
-
-    // Modal for Adding New Subject
-    const addSubjectBtn = document.getElementById("addSubjectBtn");
-    const closeModalBtn = document.getElementById("closeModalBtn");
-    const addSubjectModal = document.getElementById("addSubjectModal");
-
-    addSubjectBtn.addEventListener("click", () => {
-      addSubjectModal.style.display = "flex";
-    });
-
-    closeModalBtn.addEventListener("click", () => {
-      addSubjectModal.style.display = "none";
-    });
-
-    // Save Subject
-    const saveSubjectBtn = document.getElementById("saveSubjectBtn");
-    saveSubjectBtn.addEventListener("click", () => {
-      const subjectName = document.getElementById("subjectName").value;
-      const subjectCode = document.getElementById("subjectCode").value;
-      alert(`New Subject: ${subjectName} - ${subjectCode}`);
-      addSubjectModal.style.display = "none";
-    });
   </script>
 </body>
 </html>
