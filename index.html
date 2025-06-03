@@ -1,630 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropper JEE Prep</title>
-    <meta name="theme-color" content="#0d1b2a">
-    <link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Open Sans', sans-serif;
-        }
-        
-        :root {
-            --primary: #0d1b2a;
-            --secondary: #00a8e8;
-            --accent: #ff6b6b;
-            --light: #f8f9fa;
-            --dark: #1a1a2e;
-            --gray: #6c757d;
-            --success: #28a745;
-            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --header-height: 60px;
-            --nav-height: 70px;
-        }
-        
-        body {
-            background-color: #f0f2f5;
-            color: #333;
-            overflow-x: hidden;
-            min-height: 100vh;
-            padding: var(--header-height) 0 var(--nav-height);
-        }
-        
-        .container {
-            max-width: 100%;
-            padding: 15px;
-        }
-        
-        /* Header Styles */
-        .header {
-            background: linear-gradient(135deg, var(--primary), #0f2a3f);
-            color: white;
-            padding: 15px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            height: var(--header-height);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .header h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .date-time {
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-        
-        /* Card Styles */
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card-header {
-            background: linear-gradient(to right, #00a8e8, #0077b6);
-            color: white;
-            padding: 15px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-        
-        .card-body {
-            padding: 20px;
-        }
-        
-        /* Subject Card */
-        .subject-card {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            color: white;
-            border-radius: 12px;
-            padding: 25px 15px;
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .subject-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(30deg);
-        }
-        
-        .subject-card h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .subject-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        
-        /* Progress Section */
-        .progress-section {
-            margin-bottom: 25px;
-        }
-        
-        .progress-section h3 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--primary);
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--secondary);
-        }
-        
-        .progress-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            padding: 10px;
-            background: var(--light);
-            border-radius: 8px;
-        }
-        
-        .progress-checkbox {
-            margin-right: 12px;
-            position: relative;
-        }
-        
-        .progress-checkbox input {
-            width: 22px;
-            height: 22px;
-            accent-color: var(--success);
-        }
-        
-        .progress-label {
-            flex: 1;
-            font-size: 1rem;
-        }
-        
-        .progress-count {
-            background: var(--secondary);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        /* Lecture Card */
-        .lecture-card {
-            padding: 20px;
-            border-left: 4px solid var(--secondary);
-            margin-bottom: 15px;
-            background: white;
-            border-radius: 0 8px 8px 0;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .lecture-date {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .lecture-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .lecture-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .lecture-instructor {
-            font-size: 0.9rem;
-            color: var(--gray);
-            font-style: italic;
-        }
-        
-        .no-dpp-tag {
-            background: var(--accent);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        /* Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: white;
-            display: flex;
-            justify-content: space-around;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            padding: 12px 0;
-            z-index: 100;
-            height: var(--nav-height);
-        }
-        
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--gray);
-            text-decoration: none;
-            flex: 1;
-        }
-        
-        .nav-item.active {
-            color: var(--secondary);
-        }
-        
-        .nav-item i {
-            font-size: 1.4rem;
-            margin-bottom: 4px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 576px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 1.3rem;
-            }
-            
-            .subject-card h2 {
-                font-size: 2rem;
-            }
-            
-            .subject-card h3 {
-                font-size: 1.3rem;
-            }
-        }
-        
-        /* Physics Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .physics-animation {
-            animation: float 4s ease-in-out infinite;
-            text-shadow: 0 0 10px rgba(0, 168, 232, 0.5);
-        }
-        
-        /* Section Divider */
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #ddd, transparent);
-            margin: 25px 0;
-        }
-        
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), #0f2a3f);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: var(--secondary);
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Offline Notification */
-        .offline-notification {
-            position: fixed;
-            bottom: var(--nav-height);
-            left: 0;
-            width: 100%;
-            background: var(--accent);
-            color: white;
-            text-align: center;
-            padding: 10px;
-            z-index: 99;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .offline-notification.show {
-            transform: translateY(0);
-        }
-        
-        /* Add to Home Screen Prompt */
-        .install-prompt {
-            position: fixed;
-            bottom: var(--nav-height);
-            left: 0;
-            width: 100%;
-            background: var(--success);
-            color: white;
-            padding: 15px;
-            z-index: 99;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .install-prompt.show {
-            transform: translateY(0);
-        }
-        
-        .install-prompt button {
-            background: white;
-            color: var(--success);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        
-        /* PDF Viewer */
-        .pdf-viewer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1001;
-            display: none;
-            flex-direction: column;
-            padding: 20px;
-        }
-        
-        .pdf-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            color: white;
-        }
-        
-        .pdf-container {
-            flex: 1;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        /* Add Subject Modal */
-        .add-subject-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            display: none;
-        }
-        
-        .modal-content {
-            background: white;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 12px;
-            padding: 20px;
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .modal-body {
-            margin-bottom: 20px;
-        }
-        
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        
-        .form-group input, 
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            background: var(--secondary);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        
-        button.secondary {
-            background: #6c757d;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dropper JEE Prep</title>
+  <meta name="theme-color" content="#0d1b2a" />
+  <link rel="manifest" href="manifest.json" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 60px 15px 70px;
+      color: #333;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #0d1b2a, #0f2a3f);
+      color: #fff;
+      padding: 15px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .header h1 {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+    }
+
+    .date-time {
+      font-size: 0.85rem;
+    }
+
+    .subject-card {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      border-radius: 12px;
+      padding: 25px 15px;
+      text-align: center;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .subject-card h2 {
+      font-size: 2.5rem;
+      margin: 0 0 10px;
+    }
+
+    .subject-card h3 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .progress-item {
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      background: #fff;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      justify-content: space-around;
+      padding: 12px 0;
+    }
+
+    .nav-item {
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.85rem;
+    }
+
+    .nav-item.active {
+      color: #00a8e8;
+    }
+
+    .nav-item i {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #ddd, transparent);
+      margin: 25px 0;
+    }
+
+    h2, h3 {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader"></div>
-        <h2 style="color: white;">Dropper JEE Prep</h2>
-        <p style="color: rgba(255,255,255,0.7); margin-top: 10px;">Loading your study resources...</p>
-    </div>
-    
-    <!-- Offline Notification -->
-    <div class="offline-notification" id="offlineNotification">
-        <i class="fas fa-wifi"></i> You are currently offline. Some features may be limited.
-    </div>
-    
-    <!-- Install Prompt -->
-    <div class="install-prompt" id="installPrompt">
-        <div>
-            <strong>Install Dropper JEE Prep</strong>
-            <p>Add to home screen for a better experience</p>
-        </div>
-        <button id="installButton">Install</button>
-    </div>
-    
-    <!-- Header Section -->
-    <div class="header">
-        <h1>Dropper JEE</h1>
-        <div class="date-time" id="dateTime">5/16/2025 | 01:34:56</div>
+  <!-- Header -->
+  <div class="header">
+    <h1>Dropper JEE</h1>
+    <div class="date-time">5/16/2025 | 01:34:56</div>
+  </div>
+
+  <!-- Subjects Section -->
+  <div class="container">
+    <h2 style="margin-top: 20px;">Subjects</h2>
+    <p>Select your subjects & start learning</p>
+
+    <div class="subject-card">
+      <h2>E=mc²</h2>
+      <h3>Physics</h3>
     </div>
 
-    <div class="container">
-        <!-- Subjects Screen -->
-        <div id="subjects-screen">
-            <h2 style="margin: 20px 0 10px; color: var(--primary); font-family: 'Poppins', sans-serif;">Subjects</h2>
-            <p style="margin-bottom: 20px; color: var(--gray);">Select your subjects & start learning</p>
-            
-            <!-- Physics Card -->
-            <div class="subject-card" data-subject="physics">
-                <h2 class="physics-animation">E=mc²</h2>
-                <h3>Physics</h3>
-            </div>
-            
-            <div class="section-divider"></div>
-            
-            <!-- Maths Section -->
-            <h3 style="font-family: 'Poppins', sans-serif; margin-bottom: 15px; color: var(--primary);">Maths</h3>
-            
-            <div class="card">
-                <div class="card-body">
-                    <div class="progress-item" data-subject="physical-chemistry">
-                        <span class="progress-label">Physical Chemistry</span>
-                    </div>
-                    <div class="progress-item" data-subject="inorganic-chemistry">
-                        <span class="progress-label">Inorganic Chemistry</span>
-                    </div>
-                    <div class="progress-item" data-subject="organic-chemistry">
-                        <span class="progress-label">Organic Chemistry</span>
-                    </div>
-                </div>
-            </div>
-            
-            <button id="addSubjectBtn" style="width: 100%; margin-top: 20px;">
-                <i class="fas fa-plus"></i> Add New Subject
-            </button>
-        </div>
-        
-        <!-- Progress Screen -->
-        <div id="progress-screen" style="display: none;">
-            <div class="card">
-                <div class="card-header">Dropper JEE</div>
-                <div class="card-body">
-                    <div class="progress-section">
-                        <div class="progress-item">
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="videos1">
-                            </div>
-                            <label class="progress-label" for="videos1">0 Videos</label>
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="exercises1" checked>
-                            </div>
-                            <label class="progress-label" for="exercises1">0 Exercises</label>
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="notes1">
-                            </div>
-                            <label class="progress-label" for="notes1">16 Notes</label>
-                        </div>
-                    </div>
-                    
-                    <div class="section-divider"></div>
-                    
-                    <div class="progress-section">
-                        <h3>PYQ Practice Sheet || (Only PDF)</h3>
-                        <div class="progress-item">
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="videos2" checked>
-                            </div>
-                            <label class="progress-label" for="videos2">0 Videos</label>
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="exercises2" checked>
-                            </div>
-                            <label class="progress-label" for="exercises2">0 Exercises</label>
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="notes2">
-                            </div>
-                            <label class="progress-label" for="notes2">30 Notes</label>
-                        </div>
-                    </div>
-                    
-                    <div class="section-divider"></div>
-                    
-                    <div class="progress-section">
-                        <h3>Short Notes || Only PDF</h3>
-                        <div class="progress-item">
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="videos3" checked>
-                            </div>
-                            <label class="progress-label" for="videos3">0 Videos</label>
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="exercises3" checked>
-                            </div>
-                            <label class="progress-label" for="exercises3">0 Exercises</label>
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="notes3">
-                            </div>
-                            <label class="progress-label" for="notes3">15 Notes</label>
-                        </div>
-                    </div>
-                    
-                    <div class="section-divider"></div>
-                    
-                    <div class="progress-section">
-                        <h3>11th Basic Revision</h3>
-                        <div class="progress-item">
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="videos4">
-                            </div>
-                            <label class="progress-label" for="videos4">5 Videos</label>
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="exercises4">
-                            </div>
-                            <label class="progress-label" for="exercises4">12 Exercises</label>
-                            <div class="progress-checkbox">
-                                <input type="checkbox" id="notes4">
-                            </div>
-                            <label class="progress-label" for="notes4">8 Notes</label>
-   
+    <div class="section-divider"></div>
+
+    <h3>Maths</h3>
+    <div class="progress-item">Physical Chemistry</div>
+    <div class="progress-item">Inorganic Chemistry</div>
+    <div class="progress-item">Organic Chemistry</div>
+
+    <button style="width:100%; margin-top:20px; padding:10px; background:#00a8e8; border:none; color:#fff; border-radius:8px; font-weight:600;">
+      <i class="fas fa-plus"></i> Add New Subject
+    </button>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="nav-item active">
+      <i class="fas fa-book"></i>
+      Subjects
+    </div>
+    <div class="nav-item">
+      <i class="fas fa-chart-line"></i>
+      Progress
+    </div>
+    <div class="nav-item">
+      <i class="fas fa-video"></i>
+      Lectures
+    </div>
+    <div class="nav-item">
+      <i class="fas fa-user"></i>
+      Profile
+    </div>
+  </div>
+</body>
+</html>
