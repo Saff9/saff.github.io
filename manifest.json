@@ -1,0 +1,9 @@
+{
+  "name": "Dropper JEE Prep",
+  "short_name": "JEE Prep",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0d1b2a",
+  "theme_color": "#00a8e8",
+  "icons": []
+}
