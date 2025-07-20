@@ -1,0 +1,90 @@
+
+{% extends "base.html" %}
+
+{% block title %}Stock Market News - StockPulse{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>Market News</h1>
+                <div class="btn-group" role="group">
+                    <a href="{{ url_for('news', category='all') }}" class="btn {% if category == 'all' %}btn-primary{% else %}btn-outline-primary{% endif %} btn-sm">All</a>
+                    <a href="{{ url_for('news', category='tech') }}" class="btn {% if category == 'tech' %}btn-primary{% else %}btn-outline-primary{% endif %} btn-sm">Tech</a>
+                    <a href="{{ url_for('news', category='automotive') }}" class="btn {% if category == 'automotive' %}btn-primary{% else %}btn-outline-primary{% endif %} btn-sm">Auto</a>
+                </div>
+            </div>
+
+            {% for article in news %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h4 class="card-title">{{ article.title }}</h4>
+                        <span class="badge bg-primary">{{ article.category }}</span>
+                    </div>
+                    <p class="card-text">{{ article.summary }}</p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <strong class="text-primary">{{ article.symbol }}</strong>
+                            <span class="ms-2 h5">${{ article.price }}</span>
+                            <span class="stock-positive ms-1 fw-bold">{{ article.change }}</span>
+                        </div>
+                        <small class="text-muted">{{ article.date }}</small>
+                    </div>
+                    <a href="{{ url_for('article', article_id=article.id) }}" class="btn btn-primary">
+                        Read Full Article <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Insert ad after every 2 articles -->
+            {% if loop.index % 2 == 0 %}
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Newsletter Signup -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-envelope me-2"></i>Daily Newsletter</h5>
+                </div>
+                <div class="card-body">
+                    <p>Get daily market insights delivered to your inbox!</p>
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Subscribe Free</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sidebar Ad -->
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
