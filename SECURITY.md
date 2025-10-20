@@ -9,19 +9,30 @@
 | 4.0.x   | ✅ Yes    |
 | < 4.0   | ❌ No     |
 
-> ⚠️ Always use a supported version to receive the latest security updates.
+> ⚠️ Always use a supported version to ensure you receive the latest security updates and fixes.
+
+---
 
 ## Reporting a Vulnerability
 
-If you discover a security issue, please report it responsibly:
+If you discover a security vulnerability in this project, please report it responsibly.
 
+### 📬 How to Report
 - Submit your report here: [GitHub Issue](https://github.com/Saff9/saff.github.io/new/main)  
-- Include details such as the problem, steps to reproduce, and potential impact.  
+- Include:
+  - A clear description of the issue  
+  - Steps to reproduce  
+  - The potential impact  
+  - Suggested fixes (optional)
 
-**What to Expect:**
+### ⏱ What to Expect
+- **Acknowledgment:** Within 48 hours  
+- **Updates:** You’ll receive progress updates as we investigate and fix the issue  
+- **Resolution:** If valid, a patch will be released as soon as possible  
+- **If declined:** We’ll explain why  
 
-- Acknowledgment within 48 hours  
-- Updates until the issue is resolved  
-- Explanation if the report is not accepted  
+> ⚠️ Please **do not publicly disclose** the vulnerability until a fix is released to protect users.
 
-> ⚠️ Do **not** publicly disclose the vulnerability until a fix is released.
+---
+
+_Thank you for helping keep this project secure!_
